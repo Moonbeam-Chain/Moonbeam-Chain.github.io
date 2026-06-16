@@ -1,0 +1,107 @@
+{
+ "keyword": "moonbeam chain",
+ "h1": "Moonbeam Chain",
+ "brand": "Moonbeam",
+ "niche": "chain",
+ "verb": "Explore",
+ "title": "Moonbeam Chain - Open App",
+ "meta_description": "moonbeam chain app directory: open GLMR dApps, official docs, wallet setup, and network explorers from the Moonbeam ecosystem.",
+ "palette": {
+  "mode": "dark",
+  "bg": "#2B193D",
+  "accent": "#E51A5F",
+  "ink": "#FFFFFF"
+ },
+ "hero_h2": "Explore the GLMR network and its EVM dApps",
+ "hero_lead": "moonbeam chain connects users to Moonbeam's EVM-compatible GLMR network, official app directory, wallet setup, docs, and explorers in one app-first route.",
+ "badge": "EVM Chain",
+ "widget": {
+  "from": "GLMR",
+  "from_net": "Moonbeam",
+  "to": "dApps",
+  "to_net": "Moonbeam",
+  "action": "Open Moonbeam App"
+ },
+ "trust": [
+  "EVM-compatible",
+  "GLMR utility token",
+  "Chain ID 1284"
+ ],
+ "what_is": "Moonbeam is an <a href='https://moonbeam.network/networks/moonbeam/'>EVM-compatible GLMR network</a> in the Polkadot ecosystem, built for smart contracts, dApps, and cross-chain integrations. The official app directory is the direct place to explore live Moonbeam applications.",
+ "how": [
+  {
+   "t": "Open the official app",
+   "d": "Use the app button and confirm the domain is apps.moonbeam.network before connecting a wallet."
+  },
+  {
+   "t": "Connect an EVM wallet",
+   "d": "Use MetaMask or another compatible Ethereum wallet and switch to Moonbeam mainnet when prompted."
+  },
+  {
+   "t": "Explore by category",
+   "d": "Browse DeFi, NFT, gaming, infrastructure, and tooling apps from the Moonbeam directory."
+  },
+  {
+   "t": "Verify before signing",
+   "d": "Check the app, contract, token, and network details before approving any transaction."
+  }
+ ],
+ "points": [
+  {
+   "h": "Ethereum-style tooling",
+   "p": "Moonbeam supports familiar EVM wallets and developer tooling, while using GLMR for transaction fees and network operations."
+  },
+  {
+   "h": "Cross-chain ecosystem",
+   "p": "The network is designed around interoperability, with Moonbeam docs covering XCM, GMP, and integrations for multi-chain applications."
+  },
+  {
+   "h": "Official verification path",
+   "p": "Use <a href='https://docs.moonbeam.network/builders/get-started/networks/moonbeam/'>Moonbeam Docs</a> for chain ID, RPC endpoints, wallet setup, and explorer references."
+  }
+ ],
+ "eeat": [
+  {
+   "text": "Moonbeam official site",
+   "url": "https://moonbeam.network/networks/moonbeam/"
+  },
+  {
+   "text": "Moonbeam Docs",
+   "url": "https://docs.moonbeam.network/builders/get-started/networks/moonbeam/"
+  },
+  {
+   "text": "Moonscan explorer",
+   "url": "https://moonbeam.moonscan.io/"
+  }
+ ],
+ "faq": [
+  {
+   "q": "What is moonbeam chain used for?",
+   "a": "It is used for EVM-compatible smart contracts and dApps across DeFi, NFTs, gaming, infrastructure, and cross-chain use cases in the Moonbeam ecosystem.",
+   "open": true
+  },
+  {
+   "q": "Is moonbeam chain the same as Moonbeam Network?",
+   "a": "Yes. Searchers commonly use that phrase for Moonbeam Network, the GLMR mainnet in the Polkadot ecosystem.",
+   "open": false
+  },
+  {
+   "q": "How do I add moonbeam chain to MetaMask?",
+   "a": "Use the official app or <a href='https://docs.moonbeam.network/builders/get-started/networks/moonbeam/'>Moonbeam network docs</a>; the documented mainnet chain ID is 1284.",
+   "open": false
+  },
+  {
+   "q": "Where can I explore moonbeam chain transactions?",
+   "a": "Use <a href='https://moonbeam.moonscan.io/'>Moonscan</a> to search addresses, transactions, blocks, tokens, NFTs, and verified contracts on Moonbeam.",
+   "open": false
+  },
+  {
+   "q": "Do I need GLMR on moonbeam chain?",
+   "a": "Typically yes for gas when sending transactions or interacting with contracts; individual dApps may require other assets depending on the action.",
+   "open": false
+  }
+ ],
+ "official_url": "https://apps.moonbeam.network/moonbeam",
+ "official_domain": "apps.moonbeam.network",
+ "footer_note": "Not the official app; verify the destination domain before connecting a wallet. Educational content only, not financial advice."
+}
