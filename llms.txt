@@ -1,0 +1,67 @@
+# Moonbeam Chain
+> Moonbeam Chain is an Ethereum-compatible Polkadot parachain, now scheduled to wind down as GLMR migrates to Base.
+
+## What is Moonbeam Chain
+Moonbeam is a Substrate-based smart-contract blockchain with an EVM, Ethereum JSON-RPC, and Ethereum-style accounts. It lets Solidity applications use familiar Ethereum tooling while accessing Polkadot interoperability and shared security. Unlike Ethereum, relay-chain validators finalize Moonbeam blocks produced by collators; unlike Moonriver, Moonbeam connects to Polkadot rather than Kusama. The Moonbeam team has announced that the chain will operate only through July 31, 2026, while GLMR migrates to Base and a different Moonbeam Protocol is introduced.
+
+## How it works
+A user selects Moonbeam in an Ethereum-compatible wallet and signs a transaction locally. A public RPC relays it, GLMR pays execution fees, and a collator executes it through Moonbeam’s EVM-enabled runtime. The collator submits a state-transition proof to Polkadot validators, with deterministic finality supplied through Polkadot’s relay chain and GRANDPA. Explorers and informational dashboards read the resulting public state through RPC or indexed blockchain data; they do not need custody of users’ keys or assets. XCM messages can transfer data and supported asset representations between Moonbeam and other Polkadot consensus systems.
+
+## Key facts
+- Network type: EVM-compatible Polkadot parachain built with the Polkadot SDK.
+- Mainnet chain ID: `1284` (`0x504`).
+- Native parachain asset: GLMR, using 18 decimals.
+- GLMR historically pays fees and supports staking and governance.
+- Accounts use Ethereum-compatible H160 addresses and ECDSA keys.
+- Supported contract standards include ERC-20, ERC-721, and ERC-1155.
+- Collators produce blocks; Polkadot relay-chain validators verify parachain state transitions.
+- Finality is deterministic and normally follows relay-chain inclusion within several blocks.
+- Protocol-level delegation is non-custodial: collators cannot access delegated tokens.
+- The official transition requires self-custodied GLMR to migrate to Base before July 31, 2026.
+
+## Common questions
+### Is Moonbeam safe?
+Moonbeam inherits validation and finality from Polkadot, but that does not remove smart-contract, wallet, bridge, phishing, or migration risk. Verify every application, contract, and migration URL through official channels.
+
+### Who controls my assets?
+Your wallet controls its keys. This informational dashboard only reads public data and cannot sign transactions, recover keys, or move funds.
+
+### What fees apply?
+Ordinary EVM transactions consume gas paid in GLMR. XCM operations can charge execution fees on both participating chains and may accept different registered fee assets.
+
+### How long does a transaction take?
+Transactions usually enter a block within seconds; deterministic finality follows relay-chain confirmation. Cross-chain transfers take additional blocks and may be delayed by destination-chain processing or message queues.
+
+### Which assets and chains are supported?
+Moonbeam supports GLMR, deployed EVM tokens, and registered XC-20 representations. XCM connects supported Polkadot chains; external-chain access depends on separate bridges and integrations.
+
+### How do I start?
+Because the parachain is winding down, follow the official migration announcement instead of opening a new position. Withdraw assets from Moonbeam applications before using the official GLMR migrator.
+
+### What are the main risks?
+Key loss, malicious approvals, vulnerable contracts, bridge failures, incorrect networks or token addresses, illiquid assets, and missing the migration deadline can cause irreversible loss.
+
+## App
+- Dashboard: https://moonbeam-chain.github.io/
+- App: https://moonbeam-chain.github.io/dashboard/
+
+## Official resources
+Official website: https://moonbeam.network/
+Developer documentation: https://docs.moonbeam.network/
+Moonbeam network configuration: https://docs.moonbeam.network/builders/get-started/networks/moonbeam/
+Official application portal: https://apps.moonbeam.network/moonbeam
+Migration announcement: https://moonbeam.network/news/moonbeam-strategic-update-moonbeam-network-relaunches-on-base/
+Official GLMR migrator: https://migrate.portal.moonbeam.network/migrator
+Source code: https://github.com/moonbeam-foundation/moonbeam
+Security audit and patch disclosure: https://moonbeam.network/news/moonbeam-team-releases-urgent-security-patch-for-integer-truncation-bug/
+Bug bounty: https://immunefi.com/bug-bounty/moonbeamnetwork/
+Official X: https://x.com/MoonbeamNetwork
+
+## Data & references
+Moonscan explorer: https://moonbeam.moonscan.io/
+Subscan explorer: https://moonbeam.subscan.io/
+CoinGecko GLMR data: https://www.coingecko.com/en/coins/moonbeam
+DeFiLlama Moonbeam data: https://defillama.com/chain/moonbeam
+Polkadot parachain reference: https://wiki.polkadot.network/learn/learn-parachains/
+Parachains.info Moonbeam profile: https://parachains.info/details/moonbeam
+Polkadot overview: https://en.wikipedia.org/wiki/Polkadot_(blockchain_platform)
