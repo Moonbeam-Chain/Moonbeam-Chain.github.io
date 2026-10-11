@@ -1,1410 +1,302 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moonbeam — Ethereum-Compatible Smart Contracts on Polkadot</title>
-<meta name="description" content="Moonbeam is the Ethereum-compatible smart-contract parachain on Polkadot. Learn how its EVM, GLMR gas token, and XCM-connected contracts bridge Ethereum tooling with Polkadot's ecosystem.">
-<link rel="canonical" href="https://moonbeam-chain.github.io/">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Moonbeam">
-<meta property="og:url" content="https://moonbeam-chain.github.io/">
-<meta property="og:image" content="https://moonbeam-chain.github.io/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Moonbeam">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonbeam — Ethereum-Compatible Smart Contracts on Polkadot</title>
+  <meta name="description" content="Moonbeam is the Ethereum-compatible smart-contract parachain on Polkadot. Learn how its EVM, GLMR gas token, and XCM-connected contracts bridge Ethereum tooling with Polkadot's ecosystem.">
+  <link rel="canonical" href="https://moonbeam-chain.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moonbeam">
+  <meta property="og:description" content="Moonbeam is the Ethereum-compatible smart-contract parachain on Polkadot. Learn how its EVM, GLMR gas token, and XCM-connected contracts bridge Ethereum tooling with Polkadot's ecosystem.">
+  <meta property="og:url" content="https://moonbeam-chain.github.io/">
+  <meta property="og:image" content="https://moonbeam-chain.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Moonbeam">
+  <meta name="twitter:description" content="Moonbeam is the Ethereum-compatible smart-contract parachain on Polkadot. Learn how its EVM, GLMR gas token, and XCM-connected contracts bridge Ethereum tooling with Polkadot's ecosystem.">
+  <meta name="twitter:image" content="https://moonbeam-chain.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://moonbeam-chain.github.io/#website", "url": "https://moonbeam-chain.github.io/", "name": "Moonbeam — Ethereum-Compatible Smart Contracts on Polkadot"}, {"@type": "WebPage", "@id": "https://moonbeam-chain.github.io/#webpage", "url": "https://moonbeam-chain.github.io/", "name": "Moonbeam — Ethereum-Compatible Smart Contracts on Polkadot", "isPartOf": {"@id": "https://moonbeam-chain.github.io/#website"}, "description": "Moonbeam is the Ethereum-compatible smart-contract parachain on Polkadot. Learn how its EVM, GLMR gas token, and XCM-connected contracts bridge Ethereum tooling with Polkadot's ecosystem.", "datePublished": "2026-10-11", "dateModified": "2026-10-11"}, {"@type": "SoftwareApplication", "name": "Moonbeam", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://moonbeam-chain.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Chains"}, {"@type": "ListItem", "position": 3, "name": "Moonbeam"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Moonbeam?", "acceptedAnswer": {"@type": "Answer", "text": "Moonbeam is an Ethereum-compatible smart-contract parachain built on Polkadot. It runs a full Ethereum Virtual Machine, so developers can deploy existing Solidity contracts and use familiar Ethereum wallets and tools while the network settles through Polkadot's shared relay chain."}}, {"@type": "Question", "name": "What is GLMR used for?", "acceptedAnswer": {"@type": "Answer", "text": "GLMR is Moonbeam's native gas token. It pays for every transaction's execution cost, backs on-chain governance votes, and is staked toward the collators that produce blocks. No transaction on the network can be submitted without GLMR to cover gas."}}, {"@type": "Question", "name": "What does XCM let a Moonbeam contract do?", "acceptedAnswer": {"@type": "Answer", "text": "XCM is Polkadot's cross-consensus messaging format. It lets a contract on Moonbeam request assets, trigger actions, or receive tokens from other parachains natively, without routing through a third-party bridge or a centralized relayer."}}, {"@type": "Question", "name": "What is a connected contract?", "acceptedAnswer": {"@type": "Answer", "text": "A connected contract is ordinary Solidity code that calls XCM precompiles to reach outside its own chain as a native operation. It lets a single contract on Moonbeam interact with assets or logic held on a separate parachain."}}, {"@type": "Question", "name": "How does Moonbeam stay secure without its own validators?", "acceptedAnswer": {"@type": "Answer", "text": "Moonbeam leases security from the Polkadot relay chain. Its collators assemble blocks, and the relay chain's shared validator set checks and finalizes them, so Moonbeam does not need to bootstrap an entirely separate validator network."}}, {"@type": "Question", "name": "Can existing Ethereum tools be used on Moonbeam?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Moonbeam mirrors Ethereum's RPC behavior, account model, and precompiles closely enough that MetaMask, Hardhat, Foundry, Remix, and similar Ethereum developer tools connect to it without a custom adapter."}}, {"@type": "Question", "name": "What kinds of applications run on Moonbeam?", "acceptedAnswer": {"@type": "Answer", "text": "Decentralized exchanges, lending markets, NFT platforms, and infrastructure projects run on Moonbeam. Many of them also use XCM to reach assets or logic on other parachains, something a standalone EVM chain cannot do natively."}}]}]}</script>
-<style>
-:root{--bg:#FAF9FC;--surface:#FFFFFF;--text:#16131F;--muted:#5F5870;--accent:#7C3AED;--accent-ink:#FFFFFF;--radius:20px;--display:"Sora";--body:"IBM Plex Sans"}
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
-  background: var(--bg);
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  margin: 0;
-  min-width: 280px;
-  color: var(--text);
-  background: var(--bg);
-  font-family: var(--body);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-wrap: break-word;
-}
-::selection {
-  color: var(--accent-ink);
-  background: var(--accent);
-}
-a {
-  color: var(--accent);
-  text-decoration-thickness: .075em;
-  text-underline-offset: .2em;
-  transition: color .18s ease, background .18s ease, border-color .18s ease;
-}
-a:hover {
-  color: var(--text);
-}
-a:focus-visible,
-summary:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 5px;
-  border-radius: calc(var(--radius) * .35);
-}
-img,
-svg,
-video {
-  max-width: 100%;
-  vertical-align: middle;
-}
-img,
-video {
-  height: auto;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-  color: var(--text);
-  font-family: var(--display);
-  font-weight: 650;
-  line-height: 1.2;
-  text-wrap: balance;
-}
-p,
-ul,
-ol,
-dl,
-figure,
-blockquote {
-  margin-top: 0;
-}
-[hidden] {
-  display: none !important;
-}
-.ce08700 {
-  width: min(100% - 6rem, 1240px);
-  margin-inline: auto;
-}
-.ce45fdb {
-  position: absolute;
-  z-index: 20;
-  top: 1rem;
-  left: 1rem;
-  padding: .75rem 1.15rem;
-  transform: translateY(-180%);
-  border-radius: var(--radius);
-  color: var(--accent-ink);
-  background: var(--accent);
-  font-weight: 600;
-}
-.ce45fdb:focus {
-  transform: translateY(0);
-}
-.cf2c1c1 {
-  position: relative;
-  z-index: 1;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, var(--bg));
-  background: var(--bg);
-}
-.ccd6852 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  min-height: 88px;
-  padding-block: 1rem;
-}
-.c372dd6 {
-  display: inline-flex;
-  align-items: center;
-  gap: .75rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 650;
-  letter-spacing: -.04em;
-}
-.c332155 {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--surface));
-  border-radius: calc(var(--radius) * .55);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
-}
-.c332155 svg {
-  width: 19px;
-  height: 19px;
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.c596a2a {
-  display: inline-flex;
-  align-items: center;
-  gap: .8rem;
-  padding: .5rem 0;
-  color: var(--text);
-  font-size: .9rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-.c596a2a:hover {
-  color: var(--accent);
-}
-.ca81a48 {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border-bottom: 1px solid color-mix(in srgb, var(--accent) 15%, var(--bg));
-  background:
-    radial-gradient(ellipse at 95% 12%, color-mix(in srgb, var(--accent) 14%, transparent), color-mix(in srgb, var(--accent) 0%, transparent) 62%),
-    linear-gradient(130deg, var(--surface), color-mix(in srgb, var(--accent) 5%, var(--bg)) 70%, var(--bg));
-}
-.ca81a48::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 520px;
-  height: 520px;
-  right: -240px;
-  bottom: -310px;
-  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
-  border-radius: 50%;
-  box-shadow: 0 0 0 65px color-mix(in srgb, var(--accent) 3%, transparent), 0 0 0 130px color-mix(in srgb, var(--accent) 2%, transparent);
-  pointer-events: none;
-}
-.c3a464e {
-  padding-block: 1.2rem 3rem;
-}
-.cdf3d61 {
-  margin-bottom: 1.6rem;
-  color: var(--muted);
-  font-size: .8rem;
-  line-height: 1.6;
-}
-.cdccbbf {
-  display: inline;
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: inherit;
-  text-decoration: none;
-}
-.cdccbbf a,
-a.cdccbbf {
-  color: var(--muted);
-  text-decoration: none;
-}
-.cdccbbf a:hover,
-a.cdccbbf:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-.cdf3d61 ol,
-.cdf3d61 ul,
-ol.cdccbbf,
-ul.cdccbbf {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .45rem .7rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.cdf3d61 li {
-  display: inline;
-}
-.cdf3d61 [aria-current="page"] {
-  color: var(--text);
-}
-.c54783f {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .8rem;
-  margin-bottom: 1.35rem;
-  color: var(--accent);
-  font-size: .875rem;
-  font-weight: 600;
-}
-.c210f4d {
-  padding-block: .3rem;
-}
-.c104530 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 36px;
-  max-width: 180px;
-  padding: .4rem .65rem;
-  border: 1px solid color-mix(in srgb, var(--text) 9%, var(--surface));
-  border-radius: calc(var(--radius) * .6);
-  background: var(--surface);
-  box-shadow: 0 3px 10px color-mix(in srgb, var(--text) 4%, transparent);
-  color: var(--text);
-  font-size: .8rem;
-  line-height: 1;
-}
-.c104530:empty {
-  display: none;
-}
-.c104530 img,
-.c104530 svg {
-  display: block;
-  width: auto;
-  max-width: 148px;
-  height: 24px;
-  object-fit: contain;
-}
-.ca81a48 h1 {
-  max-width: 1050px;
-  margin: 0 0 1.5rem;
-  font-family: var(--display);
-  font-size: clamp(2.7rem, 5.7vw, 5.1rem);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -.055em;
-  overflow-wrap: anywhere;
-}
-.ca81a48 h1 em {
-  color: var(--accent);
-  font-style: normal;
-}
-.ca81a48 h1 a {
-  color: inherit;
-}
-.cc2cb4c {
-  max-width: 760px;
-  margin: 0 0 2.1rem;
-  color: var(--muted);
-  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-  line-height: 1.75;
-  text-wrap: pretty;
-}
-.c94c4da {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.7rem;
-  min-height: 54px;
-  padding: .85rem 1.35rem;
-  border: 1px solid var(--accent);
-  border-radius: var(--radius);
-  color: var(--accent-ink);
-  background: var(--accent);
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 18%, transparent);
-  font-family: var(--body);
-  font-size: .95rem;
-  font-weight: 650;
-  line-height: 1.4;
-  text-decoration: none;
-  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
-}
-.c94c4da:hover {
-  color: var(--accent-ink);
-  background: color-mix(in srgb, var(--accent) 92%, var(--text));
-  box-shadow: 0 9px 24px color-mix(in srgb, var(--accent) 24%, transparent);
-  transform: translateY(-2px);
-}
-.c87e757 {
-  font-family: var(--body);
-  font-size: 1.25em;
-  line-height: 1;
-}
-.ca37abe {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.82fr);
-  gap: clamp(2rem, 4vw, 3.75rem);
-  align-items: start;
-}
-.c430b44 {
-  min-width: 0;
-}
-.c430b44 .cc2cb4c {
-  margin-bottom: 1.6rem;
-}
-.cc294bc {
-  position: relative;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.15rem, 2vw, 1.65rem);
-  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--surface));
-  border-radius: calc(var(--radius) * 1.4);
-  background: linear-gradient(158deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), var(--surface) 46%);
-  box-shadow: 0 22px 60px -26px color-mix(in srgb, var(--text) 24%, transparent), 0 3px 12px -6px color-mix(in srgb, var(--accent) 14%, transparent);
-}
-.cc294bc::before {
-  content: "";
-  position: absolute;
-  inset: -1px 14% auto;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 60%, transparent), transparent);
-}
-.cb3e95b {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.6rem 1rem;
-  margin-bottom: 1rem;
-}
-.cb3e95b h2 {
-  margin: 0;
-  font-family: var(--display);
-  font-size: 1.15rem;
-  font-weight: 650;
-  letter-spacing: -0.03em;
-}
-.cddc081 {
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
-  padding: 0.28rem 0.62rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
-.cb549dc .c52e4b1 {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-}
-.cb549dc .c52e4b1 th,
-.cb549dc .c52e4b1 td {
-  padding: 0.58rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  vertical-align: top;
-  text-align: left;
-  overflow-wrap: anywhere;
-}
-.cb549dc .c52e4b1 tr:last-child th,
-.cb549dc .c52e4b1 tr:last-child td {
-  border-bottom: 0;
-}
-.cb549dc .c52e4b1 th {
-  width: 38%;
-  padding-right: 0.9rem;
-  color: var(--muted);
-  font-weight: 500;
-}
-.cb549dc .c52e4b1 td {
-  color: var(--text);
-  font-weight: 550;
-}
-.cf33ebd {
-  margin-top: 1.15rem;
-  width: 100%;
-}
-@media (max-width: 920px) {
-  .ca37abe {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-  }
-  .cc294bc {
-    width: 100%;
-    max-width: 560px;
-  }
-}
-.summary-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-  margin-block: 1.5rem 4.5rem;
-}
-.summary-item {
-  min-width: 0;
-  padding: 1.2rem 1.35rem;
-  border: 1px solid color-mix(in srgb, var(--text) 9%, var(--surface));
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 3px 12px color-mix(in srgb, var(--text) 3%, transparent);
-}
-.summary-item strong {
-  display: block;
-  margin-bottom: .2rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -.02em;
-}
-.summary-item span {
-  display: block;
-  color: var(--muted);
-  font-size: .8rem;
-  line-height: 1.5;
-}
-.c8b76c7 {
-  display: grid;
-  grid-template-columns: 235px minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(2.5rem, 5vw, 5rem);
-  padding-bottom: 4.5rem;
-}
-.c9189c4 {
-  position: sticky;
-  top: 2rem;
-  min-width: 0;
-  max-height: calc(100dvh - 4rem);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--muted) 35%, var(--surface)) var(--surface);
-  padding: .3rem .75rem 1rem .25rem;
-}
-.c247431 {
-  margin: 0 0 1.1rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: .95rem;
-  font-weight: 650;
-  letter-spacing: -.02em;
-}
-.c03c1bf {
-  display: grid;
-  gap: .3rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.c03c1bf li {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-}
-.c3970ec {
-  position: relative;
-  display: block;
-  padding: .7rem .9rem .7rem 1.1rem;
-  border-inline-start: 2px solid color-mix(in srgb, var(--muted) 18%, var(--bg));
-  border-radius: 0 calc(var(--radius) * .55) calc(var(--radius) * .55) 0;
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: .85rem;
-  font-weight: 450;
-  line-height: 1.5;
-  text-decoration: none;
-  overflow-wrap: anywhere;
-}
-.c3970ec:hover {
-  border-inline-start-color: color-mix(in srgb, var(--accent) 45%, var(--bg));
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 5%, var(--bg));
-}
-.c3970ec[aria-current="location"] {
-  border-inline-start-color: var(--accent);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 9%, var(--bg));
-  font-weight: 650;
-}
-.c063d91 {
-  margin: 1.65rem 0 0;
-  padding: 1.2rem 0 0;
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, var(--bg));
-  color: var(--muted);
-  font-size: .78rem;
-  line-height: 1.65;
-}
-.c971d36 {
-  min-width: 0;
-}
-.facts-panel {
-  padding: clamp(1.3rem, 3vw, 2.3rem);
-  margin-bottom: 3.75rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--surface));
-  border-top: 3px solid var(--accent);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 10px 35px color-mix(in srgb, var(--text) 5%, transparent);
-  scroll-margin-top: 2rem;
-}
-.panel-heading {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: .5rem 1.5rem;
-  justify-content: space-between;
-  margin-bottom: 1.4rem;
-}
-.panel-heading h2 {
-  margin: 0;
-  font-size: clamp(1.45rem, 2.3vw, 1.85rem);
-  letter-spacing: -.04em;
-}
-.panel-heading p {
-  margin: 0;
-  color: var(--muted);
-  font-size: .8rem;
-}
-.facts-content {
-  min-width: 0;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted) var(--surface);
-}
-.c52e4b1 {
-  width: 100%;
-  border-collapse: collapse;
-  color: var(--text);
-  font-family: var(--body);
-  font-size: .925rem;
-  line-height: 1.6;
-  text-align: left;
-}
-.c52e4b1 caption {
-  padding: 0 0 1rem;
-  color: var(--muted);
-  font-size: .85rem;
-  text-align: left;
-}
-.c52e4b1 th,
-.c52e4b1 td {
-  padding: 1.05rem .85rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, var(--surface));
-  vertical-align: top;
-  overflow-wrap: anywhere;
-}
-.c52e4b1 th {
-  width: 37%;
-  color: var(--muted);
-  font-weight: 500;
-}
-.c52e4b1 thead th {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
-  font-weight: 650;
-}
-.c52e4b1 td {
-  font-weight: 550;
-}
-.c52e4b1 tr > :first-child {
-  padding-left: 0;
-}
-.c52e4b1 tr > :last-child {
-  padding-right: 0;
-}
-.c52e4b1 tbody:last-child tr:last-child > *,
-.c52e4b1 > tr:last-child > * {
-  border-bottom: 0;
-}
-.c52e4b1 td p:last-child,
-.c52e4b1 th p:last-child {
-  margin-bottom: 0;
-}
-.c67be82 {
-  min-width: 0;
-}
-.c242b03 {
-  min-width: 0;
-  margin: 0 0 3.4rem;
-  scroll-margin-top: 2rem;
-}
-.c242b03 + .c242b03 {
-  padding-top: 2.8rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 11%, var(--bg));
-}
-.c5b0290 {
-  margin: 0 0 1.25rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
-  font-weight: 600;
-  line-height: 1.22;
-  letter-spacing: -.045em;
-}
-.c365157 {
-  color: var(--text);
-  font-family: var(--body);
-  font-size: 1rem;
-  line-height: 1.85;
-  overflow-wrap: anywhere;
-}
-.c365157 > :last-child {
-  margin-bottom: 0;
-}
-.c365157 p {
-  margin: 0 0 1.3rem;
-  text-wrap: pretty;
-}
-.c365157 h3 {
-  margin: 2rem 0 .9rem;
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -.025em;
-}
-.c365157 h4,
-.c365157 h5,
-.c365157 h6 {
-  margin: 1.6rem 0 .75rem;
-  font-size: 1.075rem;
-  line-height: 1.4;
-}
-.c365157 h3:first-child,
-.c365157 h4:first-child {
-  margin-top: 0;
-}
-.c365157 strong,
-.c00a808 strong {
-  color: var(--text);
-  font-weight: 650;
-}
-.c365157 ul,
-.c365157 ol,
-.c00a808 ul,
-.c00a808 ol {
-  margin: 1.2rem 0 1.6rem;
-  padding-left: 1.5rem;
-}
-.c365157 li,
-.c00a808 li {
-  padding-left: .4rem;
-  margin-block: .55rem;
-}
-.c365157 li::marker,
-.c00a808 li::marker {
-  color: var(--accent);
-  font-weight: 600;
-}
-.c365157 li > ul,
-.c365157 li > ol {
-  margin-block: .5rem;
-}
-.c365157 li p {
-  margin-bottom: .6rem;
-}
-.c365157 blockquote {
-  margin: 1.8rem 0;
-  padding: 1.3rem 1.5rem;
-  border-inline-start: 3px solid var(--accent);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
-  color: var(--text);
-  font-size: 1.05rem;
-}
-.c365157 blockquote > :last-child {
-  margin-bottom: 0;
-}
-.c365157 blockquote cite {
-  display: block;
-  margin-top: .9rem;
-  color: var(--muted);
-  font-size: .85rem;
-  font-style: normal;
-}
-.c365157 table {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  margin: 1.7rem 0;
-  overflow-x: auto;
-  border: 1px solid color-mix(in srgb, var(--text) 12%, var(--surface));
-  border-radius: var(--radius);
-  border-spacing: 0;
-  background: var(--surface);
-  font-family: var(--body);
-  font-size: .875rem;
-  line-height: 1.65;
-  text-align: left;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted) var(--surface);
-}
-.c365157 table caption {
-  padding: .9rem 1rem;
-  color: var(--muted);
-  font-size: .82rem;
-  text-align: left;
-}
-.c365157 th,
-.c365157 td {
-  min-width: 125px;
-  padding: 1rem 1.15rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, var(--surface));
-  vertical-align: top;
-}
-.c365157 th {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  font-weight: 650;
-}
-.c365157 tbody tr:nth-child(even) {
-  background: color-mix(in srgb, var(--text) 2%, var(--surface));
-}
-.c365157 tbody:last-child tr:last-child > * {
-  border-bottom: 0;
-}
-.c365157 td > :last-child,
-.c365157 th > :last-child {
-  margin-bottom: 0;
-}
-.c365157 figure {
-  margin: 1.8rem 0;
-}
-.c365157 figure img {
-  display: block;
-  border-radius: var(--radius);
-}
-.c365157 figcaption {
-  margin-top: .7rem;
-  color: var(--muted);
-  font-size: .8rem;
-  line-height: 1.6;
-}
-.c365157 code,
-.c00a808 code {
-  padding: .1em .35em;
-  border-radius: calc(var(--radius) * .25);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  color: var(--text);
-  font-family: var(--body);
-  font-size: .9em;
-}
-.c365157 pre {
-  overflow-x: auto;
-  padding: 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--text) 10%, var(--surface));
-  border-radius: var(--radius);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--body);
-  font-size: .875rem;
-  line-height: 1.7;
-}
-.c365157 pre code {
-  padding: 0;
-  background: var(--surface);
-}
-.c365157 hr {
-  margin: 2rem 0;
-  border: 0;
-  border-top: 1px solid color-mix(in srgb, var(--text) 12%, var(--bg));
-}
-.c365157 dt {
-  margin-top: 1.1rem;
-  color: var(--text);
-  font-weight: 650;
-}
-.c365157 dd {
-  margin: .4rem 0 1rem;
-  color: var(--muted);
-}
-.cf7ce0e {
-  padding-top: 2.75rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 11%, var(--bg));
-  scroll-margin-top: 2rem;
-}
-.cf7ce0e > .c5b0290 {
-  margin-bottom: 1.65rem;
-}
-.c7b794a {
-  margin: 0 0 .8rem;
-  border: 1px solid color-mix(in srgb, var(--text) 11%, var(--surface));
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 3px 12px color-mix(in srgb, var(--text) 3%, transparent);
-  overflow: clip;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-.c7b794a:hover {
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--surface));
-}
-.c7b794a[open] {
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--surface));
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--text) 4%, transparent);
-}
-.cfda730 {
-  position: relative;
-  display: block;
-  padding: 1.35rem 3.8rem 1.35rem 1.4rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.025rem;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -.015em;
-  list-style: none;
-  cursor: pointer;
-}
-.cfda730::-webkit-details-marker {
-  display: none;
-}
-.cfda730::after {
-  content: "+";
-  position: absolute;
-  top: 1.3rem;
-  right: 1.35rem;
-  display: grid;
-  place-items: center;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
-  color: var(--accent);
-  font-family: var(--body);
-  font-size: 1.15rem;
-  font-weight: 400;
-  line-height: 1;
-}
-.c7b794a[open] > .cfda730::after {
-  content: "−";
-}
-.c7b794a > .cfda730:focus-visible {
-  outline-offset: -5px;
-}
-.c00a808 {
-  padding: 0 1.4rem 1.45rem;
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: .95rem;
-  line-height: 1.8;
-}
-.c00a808 > :first-child {
-  margin-top: 0;
-}
-.c00a808 > :last-child {
-  margin-bottom: 0;
-}
-.c00a808 p {
-  margin-bottom: 1rem;
-}
-.c090267 {
-  padding-block: 3rem 3.6rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, var(--bg));
-  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
-  scroll-margin-top: 2rem;
-}
-.c42a6e1 {
-  display: grid;
-  grid-template-columns: 235px minmax(0, 1fr);
-  gap: clamp(2.5rem, 5vw, 5rem);
-}
-.cb7f4ea h2 {
-  margin-bottom: .7rem;
-  font-size: 1.4rem;
-  letter-spacing: -.035em;
-}
-.cb7f4ea p {
-  margin: 0;
-  color: var(--muted);
-  font-size: .85rem;
-  line-height: 1.7;
-}
-.ccc43d5 {
-  min-width: 0;
-}
-.c4211ea {
-  display: grid;
-  gap: .7rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--body);
-}
-.c8706c1 {
-  display: block;
-  min-width: 0;
-  padding: 1rem 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--text) 9%, var(--surface));
-  border-radius: calc(var(--radius) * .75);
-  background: var(--surface);
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: .875rem;
-  line-height: 1.7;
-  overflow-wrap: anywhere;
-}
-.c8706c1 a,
-a.c8706c1 {
-  color: var(--text);
-  text-decoration-color: color-mix(in srgb, var(--accent) 35%, var(--surface));
-  text-underline-offset: .25em;
-}
-.c8706c1 a:hover,
-a.c8706c1:hover {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-.c8706c1 p {
-  margin: .4rem 0 0;
-}
-.c8706c1 small {
-  color: var(--muted);
-  font-size: .8rem;
-}
-.c9bd866 {
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, var(--bg));
-  background: var(--bg);
-}
-.cfd9aa7 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  min-height: 100px;
-  padding-block: 1.5rem;
-}
-.ce88534 {
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -.025em;
-}
-.ca15bbc {
-  margin: 0;
-  color: var(--muted);
-  font-size: .8rem;
-}
-.ca15bbc span {
-  color: var(--text);
-}
-@media (min-width: 1500px) {
-  .c3a464e {
-    padding-bottom: 6rem;
-  }
-  .cdf3d61 {
-    margin-bottom: 4.5rem;
-  }
-  .c8b76c7 {
-    gap: 5.5rem;
-  }
-  .c42a6e1 {
-    gap: 5.5rem;
-  }
-}
-@media (max-width: 1050px) {
-  .ce08700 {
-    width: calc(100% - 3rem);
-  }
-  .c8b76c7,
-  .c42a6e1 {
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: 2.25rem;
-  }
-  .summary-strip {
-    gap: .75rem;
-  }
-  .summary-item {
-    padding: 1rem;
-  }
-  .c3970ec {
-    font-size: .8rem;
-  }
-}
-@media (max-width: 760px) {
-  html {
-    scroll-padding-top: 1rem;
-  }
-  .ccd6852 {
-    min-height: 72px;
-  }
-  .c3a464e {
-    padding-block: 1.25rem 3.25rem;
-  }
-  .cdf3d61 {
-    margin-bottom: 2.6rem;
-  }
-  .ca81a48 h1 {
-    max-width: 100%;
-    font-size: clamp(2.45rem, 7.4vw, 3.6rem);
-    letter-spacing: -.045em;
-  }
-  .cc2cb4c {
-    font-size: 1.05rem;
-  }
-  .summary-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-block: 1.2rem 2.5rem;
-  }
-  .c8b76c7 {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2.3rem;
-    padding-bottom: 3rem;
-  }
-  .c9189c4 {
-    position: static;
-    max-height: none;
-    padding: 1.2rem;
-    border: 1px solid color-mix(in srgb, var(--text) 10%, var(--surface));
-    border-radius: var(--radius);
-    background: var(--surface);
-  }
-  .c247431 {
-    margin-bottom: .8rem;
-  }
-  .c03c1bf {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .4rem .8rem;
-  }
-  .c3970ec {
-    height: 100%;
-    padding-block: .7rem;
-    font-size: .825rem;
-  }
-  .c063d91 {
-    display: none;
-  }
-  .facts-panel {
-    margin-bottom: 2.5rem;
-  }
-  .c242b03 {
-    margin-bottom: 2.6rem;
-  }
-  .c242b03 + .c242b03 {
-    padding-top: 2.2rem;
-  }
-  .c42a6e1 {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
-  }
-  .c090267 {
-    padding-block: 2.5rem;
-  }
-  .c242b03,
-  .facts-panel,
-  .cf7ce0e,
-  .c090267 {
-    scroll-margin-top: 1rem;
-  }
-}
-@media (max-width: 440px) {
-  .ce08700 {
-    width: calc(100% - 2rem);
-  }
-  .ccd6852 {
-    gap: 1rem;
-  }
-  .c372dd6 {
-    gap: .5rem;
-    font-size: 1.05rem;
-  }
-  .c596a2a {
-    gap: .45rem;
-    font-size: .8rem;
-  }
-  .c54783f {
-    gap: .65rem;
-    margin-bottom: 1.1rem;
-  }
-  .ca81a48 h1 {
-    font-size: 2.5rem;
-  }
-  .c94c4da {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .summary-item {
-    padding: .9rem;
-  }
-  .summary-item strong {
-    font-size: .9rem;
-  }
-  .summary-item span {
-    font-size: .75rem;
-  }
-  .c03c1bf {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .facts-panel {
-    padding: 1.15rem;
-  }
-  .c52e4b1 {
-    font-size: .85rem;
-  }
-  .c52e4b1 th,
-  .c52e4b1 td {
-    padding-block: .9rem;
-    padding-inline: .5rem;
-  }
-  .c365157 {
-    font-size: .95rem;
-    line-height: 1.8;
-  }
-  .c365157 blockquote {
-    padding: 1rem 1.1rem;
-  }
-  .cfda730 {
-    padding: 1.1rem 3rem 1.1rem 1.1rem;
-    font-size: .95rem;
-  }
-  .cfda730::after {
-    top: 1.1rem;
-    right: .9rem;
-  }
-  .c00a808 {
-    padding: 0 1.1rem 1.2rem;
-    font-size: .9rem;
-  }
-  .cfd9aa7 {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: .6rem;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-  }
-  .c94c4da:hover {
-    transform: none;
-  }
-}
-@media print {
-  body {
-    background: var(--surface);
-    font-size: 10pt;
-  }
-  .ce08700 {
-    width: 100%;
-  }
-  .cf2c1c1,
-  .ce45fdb,
-  .c94c4da,
-  .c9189c4,
-  .ca81a48::after {
-    display: none;
-  }
-  .ca81a48 {
-    background: var(--surface);
-  }
-  .c3a464e {
-    padding-block: 1rem 2rem;
-  }
-  .cdf3d61 {
-    margin-bottom: 1.5rem;
-  }
-  .ca81a48 h1 {
-    font-size: 32pt;
-  }
-  .summary-strip {
-    margin-bottom: 2rem;
-  }
-  .c8b76c7,
-  .c42a6e1 {
-    display: block;
-  }
-  .facts-panel,
-  .summary-item,
-  .c7b794a {
-    box-shadow: none;
-  }
-  .c5b0290,
-  .c365157 h3 {
-    break-after: avoid;
-  }
-  .c7b794a,
-  .c8706c1,
-  .c365157 tr {
-    break-inside: avoid;
-  }
-  .cb7f4ea {
-    margin-bottom: 1rem;
-  }
-}
-</style>
+  <style>
+    :root{--bg:#FAF9FC;--surface:#FFFFFF;--text:#16131F;--muted:#5F5870;--accent:#7C3AED;--accent-ink:#FFFFFF;--radius:20px;--display:"Sora";--body:"IBM Plex Sans"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .ce08700 { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .ce45fdb { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .ce45fdb:focus { transform: translateY(0); }
+    .c866c3f { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .ca320cd { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .c56e4eb { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .c83b94e { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .caf14c1 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .c415b1c { display: flex; align-items: center; gap: 1.8rem; }
+    .c415b1c > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .c415b1c > a:not(.cc589b2) { color: var(--muted); }
+    .cc589b2 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .cc589b2:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .ca320cd .cc589b2 { min-height: 42px; padding: .65rem 1rem; }
+    .cdf3d61 { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .cdccbbf { color: var(--muted); }
+    .cdccbbf a, a.cdccbbf { color: var(--muted); text-decoration: none; }
+    .cdccbbf a:hover, a.cdccbbf:hover { color: var(--accent); text-decoration: underline; }
+    .cdccbbf ol, .cdccbbf ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .ca81a48 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
+    .c8df961 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .c8df961::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .cc30284 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .c277635 { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .cfab761 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
+    .cfab761 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .cf05e58 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .cf05e58::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .route { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .endpoint { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .endpoint:last-child { align-items: flex-end; }
+    .endpoint-label, .c5b4329 { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .logo { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .logo img, .logo svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .route-arrow { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .route-arrow .caf14c1 { stroke: var(--accent); }
+    .c5b4329 { display: block; margin-bottom: .5rem; color: var(--text); }
+    .amount-field { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .amount-field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .amount-field input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .amount-field input:focus { outline: 0; }
+    .unit { color: var(--muted); font-size: .8rem; }
+    .c0e1cdd { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
+    .field-error { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .estimate { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .estimate-label { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .estimate-value { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .estimate-value small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .estimate dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .estimate dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .estimate dt { color: var(--muted); }
+    .estimate dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .method { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
+    .method summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .method p { margin: .65rem 0 0; }
+    .c277635 > .cc589b2 { width: 100%; }
+    .c423881 { padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .c3328d6 { margin-bottom: .45rem; }
+    .c2819b4 { display: flex; align-items: center; gap: .75rem; }
+    .c3fee45 { flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: 550 1.55rem/1.2 var(--display); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .c3fee45:focus { outline: 0; }
+    .c5e80cb { position: relative; display: inline-flex; align-items: center; gap: .5rem; flex: none; padding: .4rem 1.5rem .4rem .5rem; border: 1px solid color-mix(in srgb,var(--text) 13%,transparent); border-radius: 999px; background: var(--bg); }
+    .c51fe6a { width: 22px; height: 22px; border-radius: 50%; object-fit: contain; flex: none; }
+    .c15b6da { border: 0; background: transparent; color: var(--text); font: 600 .95rem/1 var(--body); cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .c15b6da:focus { outline: 0; }
+    .c5e80cb::after { content: ""; position: absolute; right: .7rem; width: .42rem; height: .42rem; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-2px) rotate(45deg); pointer-events: none; }
+    .c45592e { margin-top: .4rem; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+    .c9795b1 { position: relative; z-index: 1; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; margin: -.55rem auto; padding: 0; border: 3px solid var(--surface); border-radius: 50%; background: color-mix(in srgb,var(--accent) 13%,var(--surface)); color: var(--accent); cursor: pointer; transition: transform .2s ease, background .2s ease; }
+    .c9795b1 svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .c9795b1:hover { transform: rotate(180deg); background: color-mix(in srgb,var(--accent) 20%,var(--surface)); }
+    .c6cfd5f { display: grid; gap: .5rem; margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .82rem; }
+    .c6cfd5f div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; }
+    .c6cfd5f dt { color: var(--muted); }
+    .c6cfd5f dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .c695c42 > .cc589b2 { width: 100%; margin-top: 1.05rem; }
+    .ce10480 { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .c42401b { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .cb487b1 { max-width: 100%; overflow-x: auto; }
+    .c52e4b1 { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .c52e4b1 caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .c52e4b1 th, .c52e4b1 td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .c52e4b1 th { color: var(--muted); font-weight: 500; }
+    .c52e4b1 thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .c52e4b1 tbody tr:last-child > * { border-bottom: 0; }
+    .c029a44 { max-width: 820px; padding-block: 4rem 2rem; }
+    .c242b03 { margin-bottom: 3.3rem; }
+    .c5b0290 { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .c365157 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .c365157 p { margin-bottom: 1.2rem; }
+    .c365157 strong, .c365157 h3, .c365157 h4 { color: var(--text); }
+    .c365157 ul, .c365157 ol { padding-left: 1.3rem; }
+    .c365157 li { padding-left: .3rem; margin-block: .55rem; }
+    .c365157 li::marker { color: var(--accent); }
+    .c365157 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .c365157 img { height: auto; border-radius: var(--radius); }
+    .c365157 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .c365157 code, .c365157 pre { font-family: var(--body); }
+    .c7b794a { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .cfda730 { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .cfda730::-webkit-details-marker { display: none; }
+    .cfda730::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .cfda730::after { content: "−"; }
+    .c7b794a[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .cfda730:focus-visible { outline-offset: -5px; }
+    .c00a808 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .c00a808 > :last-child { margin-bottom: 0; }
+    .c2db333 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .c2db333 .c42401b { font-size: 1.25rem; }
+    .c4211ea { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .c8706c1 { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .c8706c1 a, a.c8706c1 { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .c8706c1 a:hover, a.c8706c1:hover { color: var(--accent); }
+    .c9bd866 { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .cfd9aa7 { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .cfd9aa7 p { margin: 0; }
+    .cfd9aa7 a { color: var(--muted); }
+    @media (max-width: 850px) { .ca81a48 { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c430b44 { max-width: 650px; } .c277635 { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .cc30284 { max-width: 60ch; } }
+    @media (max-width: 540px) { .ce08700 { width: calc(100% - 2rem); } .ca320cd { min-height: 76px; gap: .7rem; } .c56e4eb { font-size: .95rem; gap: .45rem; } .c83b94e { width: 2rem; height: 2rem; } .c415b1c { gap: .6rem; } .c415b1c > a:not(.cc589b2) { display: none; } .ca320cd .cc589b2 { padding-inline: .85rem; font-size: .8rem; } .ce10480 { padding: 1.25rem; } .c52e4b1 th, .c52e4b1 td { padding: .8rem .55rem; } .c430b44 > .cc589b2 { width: 100%; } .c029a44 { padding-top: 2.8rem; } .cfd9aa7 { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cc589b2, .amount-field { transition: none; } .cc589b2:hover { transform: none; } }
+  </style>
 </head>
 <body>
-<a class="ce45fdb" href="#guide-main">Skip to guide</a>
-<header class="cf2c1c1">
-  <div class="ce08700 ccd6852">
-    <div class="c372dd6">
-      <span class="c332155" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v14h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4zM12 6.5v14M7 9h2M15 9h2M7 12h2M15 12h2"/></svg></span>
-      <span>The guide</span>
-    </div>
-    <a class="c596a2a" href="dashboard/">Open app <span class="c87e757" aria-hidden="true">↗</span></a>
-  </div>
-</header>
-<section class="ca81a48" aria-labelledby="guide-title">
-  <div class="ce08700 c3a464e">
-    <nav class="cdf3d61" aria-label="Breadcrumb"><nav class="cdccbbf" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Chains</span> <span>/</span> <span>Moonbeam</span></nav></nav>
-    <div class="ca37abe">
-      <div class="c430b44">
-        <div class="c54783f"><span class="c210f4d">A closer look</span><span class="c104530"></span></div>
-        <h1 id="guide-title">Moonbeam, the <em>Ethereum-Compatible</em> Parachain.</h1>
-        <p class="cc2cb4c">Moonbeam is a smart-contract platform built as a parachain on Polkadot, designed from the ground up to run Ethereum code without modification. Developers deploy the same Solidity contracts, connect the same wallets, and call the same tooling they already use on Ethereum, while the underlying network settles through Polkadot's shared relay chain. That combination lets a project move onto Moonbeam in days rather than rewriting its stack for an unfamiliar virtual machine.</p>
-        <a class="c94c4da" href="dashboard/">Open app <span class="c87e757" aria-hidden="true">↗</span></a>
+  <a class="ce45fdb" href="#content">Skip to content</a>
+  <header class="c866c3f">
+    <nav class="ca320cd ce08700" aria-label="Primary navigation">
+      <a class="c56e4eb" href="#top" aria-label="Swap station, top of page">
+        <span class="c83b94e" aria-hidden="true"><svg class="caf14c1" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Swap station
+      </a>
+      <div class="c415b1c">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="cc589b2" href="dashboard/">Open app</a>
       </div>
-      <aside class="cc294bc" id="key-facts" aria-labelledby="aside-title">
-        <div class="cb3e95b">
-          <h2 id="aside-title">At a glance</h2>
-          <span class="cddc081">Chains</span>
+    </nav>
+  </header>
+  <div class="ce08700" id="top">
+    <div class="cdf3d61"><nav class="cdccbbf" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Chains</span> <span>/</span> <span>Moonbeam</span></nav></div>
+    <section class="ca81a48" aria-labelledby="hero-title">
+      <div class="c430b44">
+        <p class="c8df961">All swap routes</p>
+        <h1 id="hero-title">Moonbeam, the <em>Ethereum-Compatible</em> Parachain.</h1>
+        <p class="cc30284">Moonbeam is a smart-contract platform built as a parachain on Polkadot, designed from the ground up to run Ethereum code without modification.</p>
+        <a class="cc589b2" href="dashboard/">Open app <svg class="caf14c1" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+      <aside class="c277635 c695c42" aria-labelledby="widget-title">
+        <div class="cfab761">
+          <h2 id="widget-title">Swap</h2>
+          <span class="cf05e58">Best route</span>
         </div>
-        <div class="cb549dc"><table class="c52e4b1"><tbody><tr><th scope="row">Category</th><td>Ethereum-compatible smart-contract parachain</td></tr>
+        <div class="c423881">
+          <div class="c3328d6"><span class="c5b4329">You pay</span></div>
+          <div class="c2819b4">
+            <input id="pay-amount" class="c3fee45" type="number" inputmode="decimal" min="0" max="1000000000" step="any" value="1" aria-label="Amount you pay">
+            <span class="c5e80cb">
+              <img class="c51fe6a" id="pay-ico" width="22" height="22" alt="" src="assets/tokens/eth.svg">
+              <select id="pay-token" class="c15b6da" aria-label="Token you pay"></select>
+            </span>
+          </div>
+          <div class="c45592e" id="pay-usd">—</div>
+        </div>
+        <button type="button" class="c9795b1" id="swap-switch" aria-label="Switch the two tokens">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v13m0 0-3-3m3 3 3-3M17 20V7m0 0-3 3m3-3 3 3"/></svg>
+        </button>
+        <div class="c423881">
+          <div class="c3328d6"><span class="c5b4329">You receive</span></div>
+          <div class="c2819b4">
+            <output id="get-amount" class="c3fee45" for="pay-amount">—</output>
+            <span class="c5e80cb">
+              <img class="c51fe6a" id="get-ico" width="22" height="22" alt="" src="assets/tokens/usdt.svg">
+              <select id="get-token" class="c15b6da" aria-label="Token you receive"></select>
+            </span>
+          </div>
+          <div class="c45592e" id="get-usd">—</div>
+        </div>
+        <dl class="c6cfd5f">
+          <div><dt>Rate</dt><dd id="swap-rate">—</dd></div>
+          <div><dt>Network fee</dt><dd id="swap-fee">0.3%</dd></div>
+        </dl>
+        <noscript><p class="c0e1cdd">Enable JavaScript to estimate the swap.</p></noscript>
+        <a class="cc589b2" href="dashboard/">Swap <svg class="caf14c1" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="ce10480" id="facts" aria-labelledby="facts-title">
+      <h2 class="c42401b" id="facts-title">Key facts</h2>
+      <div class="cb487b1"><table class="c52e4b1"><tbody><tr><th scope="row">Category</th><td>Ethereum-compatible smart-contract parachain</td></tr>
 <tr><th scope="row">Host network</th><td>Polkadot</td></tr>
 <tr><th scope="row">Gas token</th><td>GLMR</td></tr>
 <tr><th scope="row">Virtual machine</th><td>Full Ethereum Virtual Machine (EVM)</td></tr>
 <tr><th scope="row">Cross-chain messaging</th><td>XCM (Cross-Consensus Messaging)</td></tr>
 <tr><th scope="row">Security model</th><td>Shared security via the Polkadot relay chain</td></tr></tbody></table></div>
-        <a class="c94c4da cf33ebd" href="dashboard/">Open app <span class="c87e757" aria-hidden="true">↗</span></a>
-      </aside>
-    </div>
+    </section>
   </div>
-</section>
-<div class="ce08700">
-  <div class="c8b76c7">
-    <nav class="c9189c4" aria-labelledby="toc-title">
-      <h2 class="c247431" id="toc-title">On this page</h2>
-      <ul class="c03c1bf" id="toc-list">
-        <li><a class="c3970ec" href="#guide-sections" data-sections-link>In depth</a></li>
-        <li><a class="c3970ec" href="#questions">Questions &amp; answers</a></li>
-        <li><a class="c3970ec" href="#sources">Sources</a></li>
-      </ul>
-      <p class="c063d91">Read from the beginning, or jump to the details you need.</p>
-    </nav>
-    <main class="c971d36" id="guide-main" tabindex="-1">
-      <div class="c67be82" id="guide-sections"><section class="c242b03"><h2 class="c5b0290">What Moonbeam Is</h2><div class="c365157"><strong>Moonbeam is an Ethereum-compatible smart-contract parachain on Polkadot that lets developers deploy unmodified Solidity contracts and use familiar Ethereum tools against a network secured by Polkadot's relay chain.</strong> Rather than building a new virtual machine and asking developers to relearn their craft, it implements the Ethereum Virtual Machine at the protocol level, mirrors Ethereum's JSON-RPC behavior, and supports the same account and key format that Ethereum wallets already use. A team that has shipped a contract to Ethereum, an Ethereum rollup, or any other EVM-based chain can point that same deployment script at this network and expect it to behave the same way, down to the gas estimation and the transaction receipts it returns. The goal behind that design is simple: reduce the decision of 'which chain should we also support' to a configuration change rather than a rewrite, so a team's existing Solidity, existing tests, and existing front end keep working with almost no new code.<h3>Why Full EVM Compatibility Matters</h3>Many chains that advertise 'EVM support' only reproduce the bytecode interpreter and leave everything else for the developer to patch around. This network goes further by matching Ethereum's RPC behavior, its precompiled contracts, and its account model closely enough that <a href="https://ethereum.org/en/developers/docs/evm/" rel="nofollow noopener" target="_blank">standard Ethereum developer tooling</a> — MetaMask, Hardhat, Foundry, Remix, The Graph — connects without a custom adapter. That depth of compatibility is what lets existing audits, libraries, and front-end integrations carry over with minimal rework, instead of becoming a separate maintenance burden for every chain a project wants to support. Even wallet signing flows and gas-estimation quirks behave the way an Ethereum developer already expects, which shortens the testing a team needs before it trusts a deployment.<h3>Where Moonbeam Sits in Polkadot</h3>Polkadot is a network of specialized chains, called parachains, that connect to a shared relay chain for consensus and finality. Moonbeam is one of those parachains, purpose-built for general smart-contract execution, while other parachains focus on identity, storage, privacy, or domain-specific logic. The <a href="https://wiki.polkadot.network/" rel="nofollow noopener" target="_blank">Polkadot wiki</a> describes this arrangement as pooled security — every parachain benefits from the same validator set rather than bootstrapping and paying for its own, which is part of why a new chain in this position can launch with meaningful security from day one instead of spending its first years recruiting validators.</div></section>
+  <main class="c029a44 ce08700" id="content">
+    <section class="c242b03"><h2 class="c5b0290">What Moonbeam Is</h2><div class="c365157"><strong>Moonbeam is an Ethereum-compatible smart-contract parachain on Polkadot that lets developers deploy unmodified Solidity contracts and use familiar Ethereum tools against a network secured by Polkadot's relay chain.</strong> Rather than building a new virtual machine and asking developers to relearn their craft, it implements the Ethereum Virtual Machine at the protocol level, mirrors Ethereum's JSON-RPC behavior, and supports the same account and key format that Ethereum wallets already use. A team that has shipped a contract to Ethereum, an Ethereum rollup, or any other EVM-based chain can point that same deployment script at this network and expect it to behave the same way, down to the gas estimation and the transaction receipts it returns. The goal behind that design is simple: reduce the decision of 'which chain should we also support' to a configuration change rather than a rewrite, so a team's existing Solidity, existing tests, and existing front end keep working with almost no new code.<h3>Why Full EVM Compatibility Matters</h3>Many chains that advertise 'EVM support' only reproduce the bytecode interpreter and leave everything else for the developer to patch around. This network goes further by matching Ethereum's RPC behavior, its precompiled contracts, and its account model closely enough that <a href="https://ethereum.org/en/developers/docs/evm/" rel="nofollow noopener" target="_blank">standard Ethereum developer tooling</a> — MetaMask, Hardhat, Foundry, Remix, The Graph — connects without a custom adapter. That depth of compatibility is what lets existing audits, libraries, and front-end integrations carry over with minimal rework, instead of becoming a separate maintenance burden for every chain a project wants to support. Even wallet signing flows and gas-estimation quirks behave the way an Ethereum developer already expects, which shortens the testing a team needs before it trusts a deployment.<h3>Where Moonbeam Sits in Polkadot</h3>Polkadot is a network of specialized chains, called parachains, that connect to a shared relay chain for consensus and finality. Moonbeam is one of those parachains, purpose-built for general smart-contract execution, while other parachains focus on identity, storage, privacy, or domain-specific logic. The <a href="https://wiki.polkadot.network/" rel="nofollow noopener" target="_blank">Polkadot wiki</a> describes this arrangement as pooled security — every parachain benefits from the same validator set rather than bootstrapping and paying for its own, which is part of why a new chain in this position can launch with meaningful security from day one instead of spending its first years recruiting validators.</div></section>
 <section class="c242b03"><h2 class="c5b0290">GLMR: The Gas Token Behind Every Moonbeam Transaction</h2><div class="c365157">Every transaction on this network, from a simple transfer to a complex contract call, is priced and paid in GLMR, the native token. GLMR covers execution gas the same way ETH covers gas on Ethereum, and it is also used for on-chain governance votes and for staking toward the collators who produce blocks. Holding a small GLMR balance is the first practical requirement for interacting with any application built on Moonbeam, since no transaction — including one that only moves a different token entirely — can be submitted without paying gas in GLMR first. The supply mechanics mirror a typical Polkadot parachain: a portion of GLMR is locked for the chain's ongoing slot, a portion rewards collators and stakers who keep it running, and the remainder circulates through the lending, trading, and NFT activity that makes up day-to-day usage. New users coming from Ethereum sometimes expect ETH itself to work as gas here, which it does not — a wallet needs GLMR specifically before it can sign anything, even a transaction that only touches a stablecoin.</div></section>
 <section class="c242b03"><h2 class="c5b0290">Connected Contracts: Moonbeam's XCM Advantage</h2><div class="c365157">What separates Moonbeam from a typical standalone EVM chain is XCM, Polkadot's cross-consensus messaging format, which lets a contract deployed here send and receive messages from other parachains without routing through a third-party bridge. The project's own documentation calls contracts that use this capability 'connected contracts' — ordinary Solidity code that reaches outside its own chain as a native network operation rather than as an external integration bolted on afterward. That distinction matters more than it might sound: a bolted-on bridge is a separate piece of infrastructure with its own operator, its own failure modes, and its own fee, while a native messaging layer inherits its guarantees from the relay chain that already secures every block.<h3>What XCM Enables</h3>Through XCM, a contract here can request an asset that is held on another parachain, trigger an action on a different chain, or receive tokens transferred in from elsewhere in the Polkadot ecosystem, all without relying on a centralized relayer or a wrapped-asset bridge run by a third party. The <a href="https://docs.moonbeam.network/builders/interoperability/xcm/" rel="nofollow noopener" target="_blank">Moonbeam documentation on XCM</a> walks through the precompiled contracts that expose this messaging layer directly to Solidity, so a developer calls it the same way they would call any other function, without learning a separate low-level messaging protocol first.<h3>Connected Contracts Explained</h3>A connected contract still looks like ordinary Solidity, but it can invoke XCM precompiles the same way it invokes any other contract function. That means a lending protocol on Moonbeam could accept collateral that originates on a separate parachain, or a DAO could manage treasury assets spread across several chains, all from one Solidity codebase with one audit trail. That is a meaningfully different approach from chains that only connect through external bridges, because the messaging guarantees come from the relay chain itself rather than from a separate bridge operator's own security, and because the logic for handling the incoming message lives in the same contract a team already audits.</div></section>
 <section class="c242b03"><h2 class="c5b0290">How Moonbeam Bridges Polkadot and Ethereum Tooling</h2><div class="c365157">Moonbeam's role in the wider landscape is partly architectural and partly practical: it gives Polkadot a chain that speaks Ethereum's language fluently, and it gives Ethereum developers a path into Polkadot's interoperability without abandoning their existing workflow or rewriting a contract they already trust. Neither side has to compromise much — the Ethereum side keeps its tooling, and the Polkadot side keeps its shared security and cross-chain messaging. The table below lays out where each half of that bridge actually comes from and what it means day to day for a team building here.<table><thead><tr><th>Capability</th><th>Comes From</th><th>What It Means for Builders</th></tr></thead><tbody><tr><td>Smart-contract execution</td><td>Ethereum Virtual Machine</td><td>Deploy existing Solidity contracts unmodified</td></tr><tr><td>Cross-chain messaging</td><td>Polkadot XCM</td><td>Reach assets and logic on other parachains natively</td></tr><tr><td>Network security</td><td>Polkadot relay chain</td><td>Shared validator set instead of a standalone chain to secure</td></tr></tbody></table></div></section>
 <section class="c242b03"><h2 class="c5b0290">Building on Moonbeam: The Developer Path</h2><div class="c365157">Deploying to Moonbeam follows the same general shape as deploying to any EVM network, with a few Polkadot-specific steps layered on top for teams that want to use its cross-chain features from day one. None of those extra steps require learning a new programming language or a new contract standard; they mostly amount to pointing familiar tools at a different endpoint and keeping a small reserve of the native gas token on hand.<ul><li>Point an existing Hardhat, Foundry, or Remix project at a Moonbeam RPC endpoint instead of an Ethereum one.</li><li>Fund a deployer account with GLMR to cover gas for the deployment transaction.</li><li>Deploy the Solidity contract exactly as written — no rewrite of the contract logic is required.</li><li>Verify the contract and inspect its transactions on a Moonbeam-focused block explorer.</li><li>Optionally integrate XCM precompiles if the contract needs to reach assets or logic held on another parachain.</li></ul></div></section>
 <section class="c242b03"><h2 class="c5b0290">Security: What Protects a Moonbeam Transaction</h2><div class="c365157">Moonbeam does not run its own independent set of validators from scratch. Instead it leases security from the Polkadot relay chain, whose validators check and finalize every block a collator on this network produces before that block is considered settled. That trade-off — giving up full sovereignty over the validator set in exchange for inherited, battle-tested security — is deliberate, and it is one of the main reasons a new parachain can be trusted with meaningful value shortly after launch.<h3>Shared Security, Explained</h3>Under Polkadot's design, a parachain in this position pays for a slot that connects it to the relay chain's validator set, and those validators are responsible for verifying blocks from every connected parachain, not just one. This pooled model is one of the central ideas <a href="https://en.wikipedia.org/wiki/Polkadot_(blockchain)" rel="nofollow noopener" target="_blank">covered in general accounts of Polkadot's architecture</a>, and it means there is no need to recruit, bond, and incentivize an entirely separate validator set the way a fully standalone chain would.<h3>Collators and Block Production</h3>Collators are the nodes that actually assemble blocks on Moonbeam and pass them along to the relay chain's validators for finalization. They are distinct from validators: collators handle the work of ordering transactions quickly, while the relay chain validators supply the final security guarantee behind every block the network produces. Users never need to understand this split to use the chain day to day, but it explains why block production stays fast while final settlement still inherits Polkadot-level security.</div></section>
-<section class="c242b03"><h2 class="c5b0290">The Moonbeam Ecosystem</h2><div class="c365157">Since its mainnet launch, Moonbeam has attracted decentralized exchanges, lending markets, NFT platforms, and infrastructure projects that wanted Ethereum-style tooling combined with access to Polkadot's interoperability. Those applications behave the same way their counterparts on Ethereum do, and the same wallets, indexers, and auditing firms that already support Ethereum generally support this chain with little extra integration work. Anyone can confirm live contract activity directly on <a href="https://moonscan.io/" rel="nofollow noopener" target="_blank">Moonbeam's block explorer</a>, which mirrors the layout of a familiar Ethereum explorer so transaction history, token transfers, and verified contract source code stay easy to inspect. For deeper technical detail on any of the topics above, the<a href="https://docs.moonbeam.network/" rel="nofollow noopener" target="_blank">official Moonbeam documentation</a> remains the primary source developers keep coming back to as the ecosystem keeps growing, and it is usually the fastest way to confirm a detail rather than relying on second-hand summaries.</div></section></div>
-      <section class="cf7ce0e" id="questions" aria-labelledby="questions-title">
-        <h2 class="c5b0290" id="questions-title">Questions &amp; answers</h2>
-        <details class="c7b794a"><summary class="cfda730">What is Moonbeam?</summary><div class="c00a808">Moonbeam is an Ethereum-compatible smart-contract parachain built on Polkadot. It runs a full Ethereum Virtual Machine, so developers can deploy existing Solidity contracts and use familiar Ethereum wallets and tools while the network settles through Polkadot's shared relay chain.</div></details>
+<section class="c242b03"><h2 class="c5b0290">The Moonbeam Ecosystem</h2><div class="c365157">Since its mainnet launch, Moonbeam has attracted decentralized exchanges, lending markets, NFT platforms, and infrastructure projects that wanted Ethereum-style tooling combined with access to Polkadot's interoperability. Those applications behave the same way their counterparts on Ethereum do, and the same wallets, indexers, and auditing firms that already support Ethereum generally support this chain with little extra integration work. Anyone can confirm live contract activity directly on <a href="https://moonscan.io/" rel="nofollow noopener" target="_blank">Moonbeam's block explorer</a>, which mirrors the layout of a familiar Ethereum explorer so transaction history, token transfers, and verified contract source code stay easy to inspect. For deeper technical detail on any of the topics above, the<a href="https://docs.moonbeam.network/" rel="nofollow noopener" target="_blank">official Moonbeam documentation</a> remains the primary source developers keep coming back to as the ecosystem keeps growing, and it is usually the fastest way to confirm a detail rather than relying on second-hand summaries.</div></section>
+    <details class="c7b794a"><summary class="cfda730">What is Moonbeam?</summary><div class="c00a808">Moonbeam is an Ethereum-compatible smart-contract parachain built on Polkadot. It runs a full Ethereum Virtual Machine, so developers can deploy existing Solidity contracts and use familiar Ethereum wallets and tools while the network settles through Polkadot's shared relay chain.</div></details>
 <details class="c7b794a"><summary class="cfda730">What is GLMR used for?</summary><div class="c00a808">GLMR is Moonbeam's native gas token. It pays for every transaction's execution cost, backs on-chain governance votes, and is staked toward the collators that produce blocks. No transaction on the network can be submitted without GLMR to cover gas.</div></details>
 <details class="c7b794a"><summary class="cfda730">What does XCM let a Moonbeam contract do?</summary><div class="c00a808">XCM is Polkadot's cross-consensus messaging format. It lets a contract on Moonbeam request assets, trigger actions, or receive tokens from other parachains natively, without routing through a third-party bridge or a centralized relayer.</div></details>
 <details class="c7b794a"><summary class="cfda730">What is a connected contract?</summary><div class="c00a808">A connected contract is ordinary Solidity code that calls XCM precompiles to reach outside its own chain as a native operation. It lets a single contract on Moonbeam interact with assets or logic held on a separate parachain.</div></details>
 <details class="c7b794a"><summary class="cfda730">How does Moonbeam stay secure without its own validators?</summary><div class="c00a808">Moonbeam leases security from the Polkadot relay chain. Its collators assemble blocks, and the relay chain's shared validator set checks and finalizes them, so Moonbeam does not need to bootstrap an entirely separate validator network.</div></details>
 <details class="c7b794a"><summary class="cfda730">Can existing Ethereum tools be used on Moonbeam?</summary><div class="c00a808">Yes. Moonbeam mirrors Ethereum's RPC behavior, account model, and precompiles closely enough that MetaMask, Hardhat, Foundry, Remix, and similar Ethereum developer tools connect to it without a custom adapter.</div></details>
 <details class="c7b794a"><summary class="cfda730">What kinds of applications run on Moonbeam?</summary><div class="c00a808">Decentralized exchanges, lending markets, NFT platforms, and infrastructure projects run on Moonbeam. Many of them also use XCM to reach assets or logic on other parachains, something a standalone EVM chain cannot do natively.</div></details>
-      </section>
-    </main>
-  </div>
-</div>
-<section class="c090267" id="sources" aria-labelledby="sources-title">
-  <div class="ce08700 c42a6e1">
-    <div class="cb7f4ea"><h2 id="sources-title">Sources</h2><p>References for further reading.</p></div>
-    <div class="ccc43d5"><ul class="c4211ea"><li><a class="c8706c1" href="https://docs.moonbeam.network/" rel="nofollow noopener" target="_blank">Moonbeam documentation</a></li>
+  </main>
+  <section class="c2db333 ce08700" id="sources" aria-labelledby="sources-title">
+    <h2 class="c42401b" id="sources-title">Sources</h2>
+    <ul class="c4211ea"><li><a class="c8706c1" href="https://docs.moonbeam.network/" rel="nofollow noopener" target="_blank">Moonbeam documentation</a></li>
 <li><a class="c8706c1" href="https://moonscan.io/" rel="nofollow noopener" target="_blank">Moonbeam block explorer (Moonscan)</a></li>
 <li><a class="c8706c1" href="https://wiki.polkadot.network/" rel="nofollow noopener" target="_blank">Polkadot wiki</a></li>
-<li><a class="c8706c1" href="https://ethereum.org/en/developers/docs/evm/" rel="nofollow noopener" target="_blank">Ethereum Virtual Machine — ethereum.org</a></li></ul></div>
-  </div>
-</section>
-<footer class="c9bd866">
-  <div class="ce08700 cfd9aa7">
-    <span class="ce88534">The guide</span>
-    <p class="ca15bbc">Last updated <span>Updated Oct 11, 2026</span></p>
-  </div>
-</footer>
-<script>
-(() => {
-  const toc = document.getElementById('toc-list');
-  const sections = Array.from(document.querySelectorAll('#guide-sections .c242b03'));
-  const fallback = toc.querySelector('[data-sections-link]');
-  const fragment = document.createDocumentFragment();
-  sections.forEach((section, index) => {
-    if (!section.id) {
-      const base = `guide-section-${index + 1}`;
-      let id = base;
-      let suffix = 1;
-      while (document.getElementById(id)) id = `${base}-${suffix++}`;
-      section.id = id;
-    }
-    const heading = section.querySelector('.c5b0290, h2, h3');
-    const item = document.createElement('li');
-    const link = document.createElement('a');
-    link.className = 'toc-link';
-    link.href = `#${encodeURIComponent(section.id)}`;
-    link.textContent = heading?.textContent.trim() || section.getAttribute('aria-label') || `Section ${index + 1}`;
-    item.append(link);
-    fragment.append(item);
-  });
-  if (sections.length) fallback.parentElement.replaceWith(fragment);
-  const entries = Array.from(toc.querySelectorAll('a[href^="#"]')).map(link => {
-    const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
-    return { link, target };
-  }).filter(entry => entry.target);
-  if (!entries.length) return;
-  let activeLink;
-  let pending = false;
-  const activate = entry => {
-    if (!entry || entry.link === activeLink) return;
-    if (activeLink) activeLink.removeAttribute('aria-current');
-    entry.link.setAttribute('aria-current', 'location');
-    activeLink = entry.link;
-  };
-  const update = () => {
-    pending = false;
-    const boundary = Math.min(180, window.innerHeight * .25);
-    let active = entries[0];
-    for (const entry of entries) {
-      if (entry.target.getBoundingClientRect().top <= boundary) active = entry;
-    }
-    const root = document.scrollingElement || document.documentElement;
-    if (root.scrollHeight > window.innerHeight && Math.ceil(window.scrollY + window.innerHeight) >= root.scrollHeight - 2) {
-      active = entries[entries.length - 1];
-    }
-    activate(active);
-  };
-  const schedule = () => {
-    if (pending) return;
-    pending = true;
-    window.requestAnimationFrame(update);
-  };
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(schedule, {
-      rootMargin: '-12% 0px -60% 0px',
-      threshold: [0, .1, .5, 1]
-    });
-    entries.forEach(entry => observer.observe(entry.target));
-  }
-  toc.addEventListener('click', event => {
-    const link = event.target.closest('a');
-    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const entry = entries.find(item => item.link === link);
-    if (!entry) return;
-    event.preventDefault();
-    const hadTabindex = entry.target.hasAttribute('tabindex');
-    if (!hadTabindex) {
-      entry.target.setAttribute('tabindex', '-1');
-      entry.target.addEventListener('blur', () => entry.target.removeAttribute('tabindex'), { once: true });
-    }
-    entry.target.focus({ preventScroll: true });
-    entry.target.scrollIntoView({
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'start'
-    });
-    if (window.location.hash !== link.hash) {
-      try { window.history.pushState(null, '', link.hash); } catch {}
-    }
-    activate(entry);
-  });
-  window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', schedule, { passive: true });
-  window.addEventListener('hashchange', schedule);
-  window.addEventListener('load', schedule, { once: true });
-  update();
-})();
-</script>
+<li><a class="c8706c1" href="https://ethereum.org/en/developers/docs/evm/" rel="nofollow noopener" target="_blank">Ethereum Virtual Machine — ethereum.org</a></li></ul>
+  </section>
+  <footer class="c9bd866">
+    <div class="cfd9aa7 ce08700">
+      <p>Updated Oct 11, 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const TOKENS = [
+        { s: 'ETH', f: 'eth', p: 2550 }, { s: 'BTC', f: 'btc', p: 62000 },
+        { s: 'USDT', f: 'usdt', p: 1 }, { s: 'USDC', f: 'usdc', p: 1 },
+        { s: 'BNB', f: 'bnb', p: 585 }, { s: 'SOL', f: 'sol', p: 145 },
+        { s: 'ARB', f: 'arb', p: 0.62 }, { s: 'OP', f: 'optimism', p: 1.65 },
+        { s: 'MATIC', f: 'polygon', p: 0.42 }, { s: 'AVAX', f: 'avalanche', p: 27 },
+        { s: 'SUI', f: 'sui', p: 1.35 }, { s: 'LTC', f: 'ltc', p: 72 },
+        { s: 'TRX', f: 'trx', p: 0.16 }, { s: 'XMR', f: 'xmr', p: 155 },
+        { s: 'XRP', f: 'xrp', p: 0.52 }, { s: 'ZEC', f: 'zec', p: 32 }
+      ];
+      const FEE = 0.003;
+      const $ = (id) => document.getElementById(id);
+      const payAmt = $('pay-amount'), payTok = $('pay-token'), payUsd = $('pay-usd'), payIco = $('pay-ico');
+      const getAmt = $('get-amount'), getTok = $('get-token'), getUsd = $('get-usd'), getIco = $('get-ico');
+      const rateEl = $('swap-rate');
+      const tok = (s) => TOKENS.find((t) => t.s === s);
+      const num = (n) => new Intl.NumberFormat('en', { maximumFractionDigits: n >= 1 ? 4 : 6 }).format(n);
+      const usd = (v) => '~$' + new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+      TOKENS.forEach((t) => {
+        [payTok, getTok].forEach((sel) => { const o = document.createElement('option'); o.value = t.s; o.textContent = t.s; sel.appendChild(o); });
+      });
+      payTok.value = 'ETH'; getTok.value = 'USDT';
+      const calc = () => {
+        const pf = tok(payTok.value), gt = tok(getTok.value);
+        payIco.src = 'assets/tokens/' + pf.f + '.svg'; payIco.alt = pf.s;
+        getIco.src = 'assets/tokens/' + gt.f + '.svg'; getIco.alt = gt.s;
+        rateEl.textContent = '1 ' + pf.s + ' ≈ ' + num(pf.p / gt.p) + ' ' + gt.s;
+        const a = parseFloat(payAmt.value);
+        if (!Number.isFinite(a) || a <= 0) { getAmt.textContent = '—'; payUsd.textContent = '—'; getUsd.textContent = '—'; return; }
+        const out = a * (pf.p / gt.p) * (1 - FEE);
+        getAmt.textContent = num(out) + ' ' + gt.s;
+        payUsd.textContent = usd(a * pf.p);
+        getUsd.textContent = usd(out * gt.p);
+      };
+      const distinct = (changed, other) => { if (changed.value === other.value) { other.value = (TOKENS.find((t) => t.s !== changed.value) || TOKENS[0]).s; } };
+      payAmt.addEventListener('input', calc);
+      payTok.addEventListener('change', () => { distinct(payTok, getTok); calc(); });
+      getTok.addEventListener('change', () => { distinct(getTok, payTok); calc(); });
+      $('swap-switch').addEventListener('click', () => { const t = payTok.value; payTok.value = getTok.value; getTok.value = t; calc(); });
+      calc();
+    })();
+  </script>
 </body>
 </html>
